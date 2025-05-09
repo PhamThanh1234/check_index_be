@@ -14,7 +14,7 @@ app.register(cors, {
 
 
 app.register(sensible);
-
+app.register(import('./routes/twoFa/otp'));
 app.register(import('./routes/checkindex/search')); 
 app.register(import('./routes/checkindex/data'));
 const start = async () => {
