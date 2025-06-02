@@ -27,6 +27,7 @@ const start = async () => {
   app.register(import('./routes/geotagimg/metadataRoutes'));
   app.register(import('./routes/geotagimg/metaRoutes'));
   app.register(import('./routes/geotagimg/imageRoutes'));
+  app.register(import('./routes/keywordClustering/keywordClusteringroutes'));
   try {
     await app.listen({ port: 8888, host: '0.0.0.0' });
     console.log('🚀 Server listening on http://localhost:8888');

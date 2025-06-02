@@ -18,6 +18,8 @@
     "@fastify/multipart": "^9.0.3",
     "@fastify/mysql": "^5.0.2",
     "@fastify/sensible": "^6.0.3",
+    "@google/genai": "^1.1.0",
+    "@google/generative-ai": "^0.24.1",
     "@types/mailparser": "^3.4.5",
     "axios": "^1.8.4",
     "dotenv": "^16.5.0",

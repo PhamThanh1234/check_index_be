@@ -1,14 +1,21 @@
-import fetch from 'node-fetch';
-
-export const checkUrlStatus = async (url: string, timeout = 5000): Promise<{ url: string, status: number | string }> => {
-  const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeout);
-
+export const checkUrlStatus = async (url: string) => {
   try {
-    const response = await fetch(url, { method: 'HEAD', signal: controller.signal });
-    clearTimeout(id);
+    // Thử request HEAD trước
+    let response = await fetch(url, {
+      method: "HEAD",
+      mode: "cors",  // hoặc no-cors tùy setup backend
+    });
+
+    if (response.status === 405) {
+      // Nếu lỗi 405, fallback sang GET
+      response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+      });
+    }
+
     return { url, status: response.status };
   } catch (error) {
-    return { url, status: 'error' };
+    return { url, status: "error" };
   }
 };
